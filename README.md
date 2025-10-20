@@ -41,19 +41,69 @@ $$u_{i,j} = \frac{1}{4}(u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1})$$
     * Matplotlib (matplotlib) : Used for visualizing and saving the results of images.
     * Scikit-image (skimage) : Provides tools related to image processing, such as image data type conversion and calculation of image quality evaluation indicators (PSNR and SSIM).
 
-## Running Steps
+## Quick Demo (Non-Interactive)
+
+For a quick demonstration without interactive mask drawing, use the demo script:
+
+```bash
+# Run with default center mask
+python demo.py
+
+# Try different mask types
+python demo.py --mask-type horizontal
+python demo.py --mask-type vertical
+python demo.py --mask-type random
+
+# Customize mask size and iterations
+python demo.py --mask-size 0.3 --iterations 500
+```
+
+The demo script will automatically generate a mask and run the inpainting algorithms, perfect for quick testing or batch processing.
+
+## Running Steps (Interactive Mode)
 
   1. **Prepare Input Image** : Place the image to be repaired in the `img/` folder. The code currently uses `img/0.jpeg` as the default input image. You can replace it with other image files as needed.
   2. **Install Dependencies** : Install the project's dependencies using the following command in the terminal or command prompt (if you haven't installed them yet):
 
-     * `pip install opencv-python numpy matplotlib scikit-image`
+     * `pip install -r requirements.txt`
+     
+     Or install manually:
+     * `pip install opencv-python numpy matplotlib scikit-image tqdm`
 
   3. **Run the Code** : Navigate to the project root directory in the terminal or command prompt and run the following command:
 
-     * `python main.py`
+     * `python inpaint.py`
+     
+     You can also customize the execution with command-line arguments:
+     ```bash
+     # Use a different input image
+     python inpaint.py --input ./img/1.jpeg
+     
+     # Specify output directory
+     python inpaint.py --output ./my_results
+     
+     # Adjust number of iterations for better/faster results
+     python inpaint.py --iterations 2000
+     
+     # Change brush size for mask drawing
+     python inpaint.py --brush-size 10
+     
+     # Skip displaying the plot (useful for batch processing)
+     python inpaint.py --no-display
+     
+     # Get help on all options
+     python inpaint.py --help
+     ```
 
-  4. **Draw the Mask** : After running the code, a window named "Draw Mask (ESC to continue)" will pop up, displaying the input image. Hold down the left mouse button and drag it on the image to draw the mask, which will be marked in red. After completing the drawing, press the ESC key to exit the mask drawing interface and the program will continue to perform the subsequent image repair and evaluation operations.
-  5. **View the Results** : After the program finishes running, you can find various output result image files in the `results/` folder. At the same time, a chart named `comparison_all_methods.png` will be generated in the same directory, showing a comparison of the repair effects of the original image, damaged image, and images repaired by different methods. In addition, the PSNR and SSIM evaluation results for each channel and overall will be output in the terminal or command prompt.
+  4. **Draw the Mask** : After running the code, a window named "Draw Mask (ESC to continue, C to clear)" will pop up, displaying the input image. 
+     - Hold down the **left mouse button** and drag it on the image to draw the mask, which will be marked in red
+     - Press **'C'** to clear the mask and start over if needed
+     - Press **ESC** when finished drawing to exit the mask drawing interface
+     - The program will then continue to perform the subsequent image repair and evaluation operations
+  5. **View the Results** : After the program finishes running, you can find various output result image files in the `results/` folder (or your specified output directory). The following files will be generated:
+     - Individual result images (original, damaged, inpainted versions, mask)
+     - A comprehensive comparison chart named `comparison_all_methods.png` showing all methods side-by-side with their PSNR and SSIM scores
+     - The PSNR and SSIM evaluation results for each channel and overall will be displayed in the terminal with a summary of the best performing method
 
 ## Code Explanation
 
