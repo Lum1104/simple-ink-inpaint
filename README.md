@@ -6,7 +6,7 @@ This project implements the Laplace equation-based Partial Differential Equation
 
 $$u_{i,j} = \frac{1}{4}(u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1})$$
 
-![comparison_all_methods](https://github.com/user-attachments/assets/b81e1831-8a47-41d3-94fe-1a18c5bfd50a)
+![Enhanced Demo Comparison](https://github.com/user-attachments/assets/065b6911-ddea-41c3-88a7-63fb3be76430)
 
 
 ## Directory Structure
@@ -124,5 +124,20 @@ The demo script will automatically generate a mask and run the inpainting algori
   * **Optimization of Algorithm Performance** : The current Laplace PDE repair algorithm may have low computational efficiency when processing larger images or higher-resolution images. Optimization techniques such as multi-threading computation and GPU acceleration can be attempted to improve the algorithm's speed and efficiency, enabling it to better handle large-scale image repair tasks in practice.
   * **Improvement of Interactive Mask Drawing Function** : The interactive mask drawing interface can be further improved, for example, by adding undo and redo functions and providing various drawing tools (such as rectangles, polygons, etc.), to enhance the convenience and flexibility for users to draw masks and more accurately specify the damaged areas of the image.
   * **Adaptive Parameter Selection** : In the current Laplace PDE repair implementation, the number of iterations and other parameters are fixed. Research can be conducted on how to adaptively select suitable parameters based on the image's characteristics (such as the size of the damaged area and the complexity of the image content) to improve the stability and adaptability of the repair effect.
+
+## Recent Improvements
+
+### Enhanced Demo Experience
+- **Command-Line Interface**: Full argument support for customizing input, output, iterations, and brush size
+- **Better User Experience**: Clear instructions, progress indicators, and helpful error messages
+- **Non-Interactive Mode**: New `demo.py` script for automated testing with predefined masks
+- **Improved Visualization**: Enhanced comparison plots with metrics displayed on each method
+- **Requirements Management**: Added `requirements.txt` for easy dependency installation
+- **Better Documentation**: Comprehensive usage examples and clearer instructions
+- **Error Handling**: Validates input files and provides helpful error messages
+- **Flexible Output**: Customizable output directories and optional plot display
+- **Clear Button**: Added ability to clear and redraw masks during interactive drawing
+
+## Contact
 
 Feel free to email me if you encounter any issue at: yuxiang.lin@gatech.edu
